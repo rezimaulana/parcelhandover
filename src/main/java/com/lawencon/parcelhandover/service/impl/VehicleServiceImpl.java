@@ -1,5 +1,9 @@
 package com.lawencon.parcelhandover.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,15 +59,46 @@ public class VehicleServiceImpl implements VehicleService{
 	}
 
 	@Override
-	public DataResDto<VehicleDataDto> getById(String id) {
-		// TODO Auto-generated method stub
-		return null;
+	public DataResDto<VehicleDataDto> getById(final String id) {
+		final Optional<Vehicle> optional = vehicleDao.getById(id);
+        Vehicle findOne = null;
+        if (optional.isPresent()) {
+            findOne = optional.get();
+            final VehicleDataDto responseDb = new VehicleDataDto();
+            responseDb.setId(findOne.getId());
+            responseDb.setVehiclePlate(findOne.getVehiclePlate());
+            responseDb.setVehicleModel(findOne.getVehicleModel());
+            responseDb.setYearMaking(findOne.getYearMaking());
+            responseDb.setManufacture(findOne.getManufacture());
+            responseDb.setVer(findOne.getVer());
+            responseDb.setIsActive(findOne.getIsActive());
+            final DataResDto<VehicleDataDto> responseBe = new DataResDto<VehicleDataDto>();
+            responseBe.setData(responseDb);
+            return responseBe;
+        } else {
+            throw new RuntimeException("Not found!");
+        }
 	}
 
 	@Override
-	public DataListResDto<VehicleDataDto> getAll(Integer page, Integer limit) {
-		// TODO Auto-generated method stub
-		return null;
+	public DataListResDto<VehicleDataDto> getAll(final Integer page, final Integer limit) {
+		final List<VehicleDataDto> responseDb = new ArrayList<>();
+        final List<Vehicle> find = vehicleDao.getAll(page, limit);
+        for (int i = 0; i < find.size(); i++) {
+            final Vehicle vehicle = find.get(i);
+            final VehicleDataDto result = new VehicleDataDto();
+            result.setId(vehicle.getId());
+            result.setVehiclePlate(vehicle.getVehiclePlate());
+            result.setVehicleModel(vehicle.getVehicleModel());
+            result.setYearMaking(vehicle.getYearMaking());
+            result.setManufacture(vehicle.getManufacture());
+            result.setVer(vehicle.getVer());
+            result.setIsActive(vehicle.getIsActive());
+            responseDb.add(result);
+        }
+        final DataListResDto<VehicleDataDto> responseBe = new DataListResDto<VehicleDataDto>();
+        responseBe.setData(responseDb);
+        return responseBe;
 	}
 
 }

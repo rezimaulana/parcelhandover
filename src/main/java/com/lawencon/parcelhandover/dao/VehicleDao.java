@@ -1,6 +1,7 @@
 package com.lawencon.parcelhandover.dao;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.lawencon.parcelhandover.model.Vehicle;
 
@@ -10,7 +11,7 @@ public interface VehicleDao {
 
 	public Vehicle update(Vehicle data);
 
-	public java.util.Optional<Vehicle> getById(String id);
+	public Optional<Vehicle> getById(String id);
 
 	public List<Vehicle> getAll(Integer page, Integer limit);
 

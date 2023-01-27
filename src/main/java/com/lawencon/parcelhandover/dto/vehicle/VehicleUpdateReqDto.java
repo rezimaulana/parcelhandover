@@ -7,6 +7,14 @@ public class VehicleUpdateReqDto {
 	private String yearMaking;
 	private String manufacture;
 	private Boolean isActive;
+	private Integer ver;
+
+	public Integer getVer() {
+		return ver;
+	}
+	public void setVer(Integer ver) {
+		this.ver = ver;
+	}
 	public String getId() {
 		return id;
 	}

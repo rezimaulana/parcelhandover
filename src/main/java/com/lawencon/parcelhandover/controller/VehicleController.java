@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,8 +15,10 @@ import com.lawencon.parcelhandover.dto.response.DataListResDto;
 import com.lawencon.parcelhandover.dto.response.DataResDto;
 import com.lawencon.parcelhandover.dto.response.InsertResDto;
 import com.lawencon.parcelhandover.dto.response.TransactionResDto;
+import com.lawencon.parcelhandover.dto.response.UpdateResDto;
 import com.lawencon.parcelhandover.dto.vehicle.VehicleDataDto;
 import com.lawencon.parcelhandover.dto.vehicle.VehicleInsertReqDto;
+import com.lawencon.parcelhandover.dto.vehicle.VehicleUpdateReqDto;
 import com.lawencon.parcelhandover.service.VehicleService;
 
 @RestController
@@ -31,7 +34,11 @@ public class VehicleController {
 		return new ResponseEntity<>(result, HttpStatus.CREATED);
 	}
 	
-	
+	@PutMapping
+	public ResponseEntity<TransactionResDto<UpdateResDto>> update(@RequestBody final VehicleUpdateReqDto data){
+		final TransactionResDto<UpdateResDto> result = vehicleService.update(data);
+		return new ResponseEntity<>(result, HttpStatus.OK);
+	}
 	
 	@GetMapping
 	public ResponseEntity<DataResDto<VehicleDataDto>> getById(@RequestParam(required = true) final String id){

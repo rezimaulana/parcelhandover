@@ -44,5 +44,14 @@ public class WarehouseDaoImpl extends BaseDaoImpl implements WarehouseDao{
         final List<Warehouse> result = query.getResultList();
         return result;
     }
+
+    @Override
+    public Optional<Warehouse> getByCode(String code) {
+        String sql = "SELECT * FROM warehouses WHERE code = :code";
+        Query query = em.createNativeQuery(sql, Warehouse.class);
+        query.setParameter("code", code);
+        Warehouse result = (Warehouse) query.getSingleResult();
+        return Optional.ofNullable(result);
+    }
     
 }

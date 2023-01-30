@@ -5,9 +5,12 @@ import java.util.Optional;
 
 import javax.persistence.Query;
 
+import org.springframework.stereotype.Repository;
+
 import com.lawencon.parcelhandover.dao.HandoverDao;
 import com.lawencon.parcelhandover.model.Handover;
 
+@Repository
 public class HandoverDaoImpl extends BaseDaoImpl implements HandoverDao {
 
     @Override

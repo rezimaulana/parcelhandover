@@ -15,4 +15,6 @@ public interface WarehouseDao {
 
 	public List<Warehouse> getAll(Integer page, Integer limit);
 
+	public Optional<Warehouse> getByCode(String code);
+
 }

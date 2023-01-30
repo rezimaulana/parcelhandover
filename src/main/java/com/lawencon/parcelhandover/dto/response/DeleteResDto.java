@@ -2,14 +2,14 @@ package com.lawencon.parcelhandover.dto.response;
 
 public class DeleteResDto {
     
-    public String getMessage() {
-		return message;
+	private String id;
+
+	public String getId() {
+		return id;
 	}
 
-	public void setMessage(String message) {
-		this.message = message;
+	public void setId(String id) {
+		this.id = id;
 	}
-
-	private String message;
 
 }

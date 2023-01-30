@@ -22,6 +22,7 @@ public class WarehouseDaoImpl extends BaseDaoImpl implements WarehouseDao{
     @Override
     public Warehouse update(Warehouse data) {
         final Warehouse result = this.em.merge(data);
+        this.em.flush();
         return result;
     }
 

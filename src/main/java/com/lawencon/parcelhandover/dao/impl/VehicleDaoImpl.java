@@ -22,6 +22,7 @@ public class VehicleDaoImpl extends BaseDaoImpl implements VehicleDao{
 	@Override
 	public Vehicle update(final Vehicle data) {
 		final Vehicle result = this.em.merge(data);
+		this.em.flush();
         return result;
 	}
 

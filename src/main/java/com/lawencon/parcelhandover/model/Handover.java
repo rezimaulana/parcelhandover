@@ -9,18 +9,21 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "distributions")
-public class Distribution extends BaseEntity{
-	
-	private static final long serialVersionUID = -502778348720598302L;
+@Table(name = "handover")
+public class Handover extends BaseEntity {
+    
+	private static final long serialVersionUID = -5343947568404208721L;
 
+	@Column(name = "arrival_time", nullable = false)
+	private LocalDateTime arrivalTime;
+	
 	@Column(name = "departure_time", nullable = false)
 	private LocalDateTime departureTime;
 	
 	@Column(name = "parcel_quantity", nullable = false)
 	private Long parcelQuantity;
-	
-	@ManyToOne
+
+    @ManyToOne
 	@JoinColumn(name = "warehouse_id")
 	private Warehouse warehouse;
 	
@@ -28,6 +31,18 @@ public class Distribution extends BaseEntity{
 	@JoinColumn(name = "user_vehicle_id")
 	private UserVehicle userVehicle;
 	
+	@ManyToOne
+	@JoinColumn(name = "handover_type_id")
+	private HandoverType handoverType;
+
+    public LocalDateTime getArrivalTime() {
+		return arrivalTime;
+	}
+
+	public void setArrivalTime(LocalDateTime arrivalTime) {
+		this.arrivalTime = arrivalTime;
+	}
+
 	public LocalDateTime getDepartureTime() {
 		return departureTime;
 	}
@@ -58,6 +73,14 @@ public class Distribution extends BaseEntity{
 
 	public void setUserVehicle(UserVehicle userVehicle) {
 		this.userVehicle = userVehicle;
+	}
+
+	public HandoverType getHandoverType() {
+		return handoverType;
+	}
+
+	public void setHandoverType(HandoverType handoverType) {
+		this.handoverType = handoverType;
 	}
 	
 }

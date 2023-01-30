@@ -6,13 +6,12 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "roles", uniqueConstraints = {
-        @UniqueConstraint(name = "roles_bk", columnNames = { "code" }),
-        @UniqueConstraint(name = "roles_ck", columnNames = { "code", "name" })
+@Table(name = "handover_type", uniqueConstraints = {
+	@UniqueConstraint(name = "handover_type_bk", columnNames = { "code" })
 })
-public class Role extends BaseEntity {
-
-	private static final long serialVersionUID = -5226904120408209850L;
+public class HandoverType extends BaseEntity {
+	
+	private static final long serialVersionUID = 1084955917764437867L;
 
 	@Column(name = "code", nullable = false, length = 10)
     private String code;
@@ -20,7 +19,7 @@ public class Role extends BaseEntity {
 	@Column(name = "name", nullable = false, length = 20)
     private String name;
 
-    public String getCode() {
+	public String getCode() {
 		return code;
 	}
 
@@ -35,5 +34,5 @@ public class Role extends BaseEntity {
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	
 }

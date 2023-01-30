@@ -22,6 +22,7 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao{
     @Override
     public User update(User data) {
         final User result = this.em.merge(data);
+        this.em.flush();
         return result;
     }
 

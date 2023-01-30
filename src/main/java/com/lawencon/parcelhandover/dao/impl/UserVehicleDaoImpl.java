@@ -22,6 +22,7 @@ public class UserVehicleDaoImpl extends BaseDaoImpl implements UserVehicleDao {
     @Override
     public UserVehicle update(UserVehicle data) {
         final UserVehicle result = this.em.merge(data);
+        this.em.flush();
         return result;
     }
 

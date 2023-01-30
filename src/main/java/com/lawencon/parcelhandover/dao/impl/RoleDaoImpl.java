@@ -22,6 +22,7 @@ public class RoleDaoImpl extends BaseDaoImpl implements RoleDao{
     @Override
     public Role update(Role data) {
         final Role result = this.em.merge(data);
+        this.em.flush();
         return result;
     }
 

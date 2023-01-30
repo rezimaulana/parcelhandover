@@ -1,9 +1,7 @@
-ALTER TABLE distributions ALTER COLUMN is_active SET DEFAULT true;
-ALTER TABLE distributions ALTER COLUMN ver SET DEFAULT 0;
-ALTER TABLE handover_dtl ALTER COLUMN is_active SET DEFAULT true;
-ALTER TABLE handover_dtl ALTER COLUMN ver SET DEFAULT 0;
-ALTER TABLE handover_hdr ALTER COLUMN is_active SET DEFAULT true;
-ALTER TABLE handover_hdr ALTER COLUMN ver SET DEFAULT 0;
+ALTER TABLE handover_type ALTER COLUMN is_active SET DEFAULT true;
+ALTER TABLE handover_type ALTER COLUMN ver SET DEFAULT 0;
+ALTER TABLE handover ALTER COLUMN is_active SET DEFAULT true;
+ALTER TABLE handover ALTER COLUMN ver SET DEFAULT 0;
 ALTER TABLE roles ALTER COLUMN is_active SET DEFAULT true;
 ALTER TABLE roles ALTER COLUMN ver SET DEFAULT 0;
 ALTER TABLE user_vehicle ALTER COLUMN is_active SET DEFAULT true;
@@ -122,12 +120,14 @@ INSERT INTO warehouses (id, code, name, region, created_by, created_at) VALUES
 ('871f26b4-f721-4dbd-8474-f251767c8958', 'BDO-GNH', 'Gunung Halu', 'West Java 1', '846b92a3-d694-4ca1-a01e-7879ca1887f1', NOW()),
 ('6bee5270-5d1f-4650-846f-17ca6b77a0b0', 'BDO-LKG', 'Lengkong', 'West Java 1', '846b92a3-d694-4ca1-a01e-7879ca1887f1', NOW());
 
-ALTER TABLE distributions ALTER COLUMN is_active DROP DEFAULT;
-ALTER TABLE distributions ALTER COLUMN ver DROP DEFAULT;
-ALTER TABLE handover_dtl ALTER COLUMN is_active DROP DEFAULT;
-ALTER TABLE handover_dtl ALTER COLUMN ver DROP DEFAULT;
-ALTER TABLE handover_hdr ALTER COLUMN is_active DROP DEFAULT;
-ALTER TABLE handover_hdr ALTER COLUMN ver DROP DEFAULT;
+INSERT INTO handover_type (id, code, name, created_by, created_at) VALUES
+('d25f8ee7-073a-4b63-87b8-a9aed60b6dd0', 'INC', 'Incoming', '846b92a3-d694-4ca1-a01e-7879ca1887f1', now()),
+('11fce56f-2997-4777-a3fb-635177206d29', 'OUT', 'Outgoing', '846b92a3-d694-4ca1-a01e-7879ca1887f1', now());
+
+ALTER TABLE handover_type ALTER COLUMN is_active DROP DEFAULT;
+ALTER TABLE handover_type ALTER COLUMN ver DROP DEFAULT;
+ALTER TABLE handover ALTER COLUMN is_active DROP DEFAULT;
+ALTER TABLE handover ALTER COLUMN ver DROP DEFAULT;
 ALTER TABLE roles ALTER COLUMN is_active DROP DEFAULT;
 ALTER TABLE roles ALTER COLUMN ver DROP DEFAULT;
 ALTER TABLE user_vehicle ALTER COLUMN is_active DROP DEFAULT;

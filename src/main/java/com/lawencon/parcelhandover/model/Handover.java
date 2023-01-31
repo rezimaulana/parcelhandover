@@ -1,5 +1,6 @@
 package com.lawencon.parcelhandover.model;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -21,9 +22,9 @@ public class Handover extends BaseEntity {
 	private LocalDateTime departureTime;
 	
 	@Column(name = "parcel_quantity", nullable = false)
-	private Long parcelQuantity;
+	private BigDecimal parcelQuantity;
 
-    @ManyToOne
+	@ManyToOne
 	@JoinColumn(name = "warehouse_id")
 	private Warehouse warehouse;
 	
@@ -51,11 +52,11 @@ public class Handover extends BaseEntity {
 		this.departureTime = departureTime;
 	}
 
-	public Long getParcelQuantity() {
+	public BigDecimal getParcelQuantity() {
 		return parcelQuantity;
 	}
 
-	public void setParcelQuantity(Long parcelQuantity) {
+	public void setParcelQuantity(BigDecimal parcelQuantity) {
 		this.parcelQuantity = parcelQuantity;
 	}
 

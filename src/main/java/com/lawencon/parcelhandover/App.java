@@ -17,4 +17,4 @@ public class App {
 // average inbound sorting by range date
 // average inbound sorting by range date and hub
 // average outbound sorting by range date
-// average inbound sorting by range date and hub
+// average outbound sorting by range date and hub

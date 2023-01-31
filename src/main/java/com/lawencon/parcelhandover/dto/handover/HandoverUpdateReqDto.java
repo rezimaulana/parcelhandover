@@ -1,11 +1,13 @@
 package com.lawencon.parcelhandover.dto.handover;
 
+import java.math.BigDecimal;
+
 public class HandoverUpdateReqDto {
     
     private String id;
     private String arrivalTime;
     private String departureTime;
-    private Long parcelQuantity;
+    private BigDecimal parcelQuantity;
     private String warehouseCode;
     private String handoverTypeCode;
     private Boolean isActive;
@@ -29,10 +31,10 @@ public class HandoverUpdateReqDto {
     public void setDepartureTime(String departureTime) {
         this.departureTime = departureTime;
     }
-    public Long getParcelQuantity() {
+    public BigDecimal getParcelQuantity() {
         return parcelQuantity;
     }
-    public void setParcelQuantity(Long parcelQuantity) {
+    public void setParcelQuantity(BigDecimal parcelQuantity) {
         this.parcelQuantity = parcelQuantity;
     }
     public String getWarehouseCode() {

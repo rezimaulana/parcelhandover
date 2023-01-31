@@ -1,5 +1,6 @@
 package com.lawencon.parcelhandover.dto.handover;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 public class HandoverDataDto {
@@ -7,7 +8,7 @@ public class HandoverDataDto {
     private String id;
     private LocalDateTime arrivalTime;
     private LocalDateTime departureTime;
-    private Long parcelQuantity;
+    private BigDecimal parcelQuantity;
 
     private String warehouseId;
     private String warehouseCode;
@@ -46,10 +47,10 @@ public class HandoverDataDto {
     public void setDepartureTime(LocalDateTime departureTime) {
         this.departureTime = departureTime;
     }
-    public Long getParcelQuantity() {
+    public BigDecimal getParcelQuantity() {
         return parcelQuantity;
     }
-    public void setParcelQuantity(Long parcelQuantity) {
+    public void setParcelQuantity(BigDecimal parcelQuantity) {
         this.parcelQuantity = parcelQuantity;
     }
     public String getWarehouseId() {

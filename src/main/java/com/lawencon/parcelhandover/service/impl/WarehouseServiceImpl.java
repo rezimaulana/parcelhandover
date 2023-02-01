@@ -85,13 +85,7 @@ public class WarehouseServiceImpl extends BaseDaoImpl implements WarehouseServic
 		Warehouse findOne = null;
 		if (optional.isPresent()) {
 			findOne = optional.get();
-			final WarehouseDataDto responseDb = new WarehouseDataDto();
-			responseDb.setId(findOne.getId());
-            responseDb.setCode(findOne.getCode());
-            responseDb.setName(findOne.getName());
-            responseDb.setRegion(findOne.getRegion());
-			responseDb.setVer(findOne.getVer());
-			responseDb.setIsActive(findOne.getIsActive());
+			final WarehouseDataDto responseDb = setToDto(findOne);
 			final DataResDto<WarehouseDataDto> responseBe = new DataResDto<WarehouseDataDto>();
 			responseBe.setData(responseDb);
 			return responseBe;
@@ -106,18 +100,24 @@ public class WarehouseServiceImpl extends BaseDaoImpl implements WarehouseServic
 		final List<Warehouse> find = warehouseDao.getAll(page, limit);
 		for (int i = 0; i < find.size(); i++) {
 			final Warehouse warehouse = find.get(i);
-			final WarehouseDataDto result = new WarehouseDataDto();
-			result.setId(warehouse.getId());
-            result.setCode(warehouse.getCode());
-            result.setName(warehouse.getName());
-            result.setRegion(warehouse.getRegion());
-			result.setVer(warehouse.getVer());
-			result.setIsActive(warehouse.getIsActive());
+			final WarehouseDataDto result = setToDto(warehouse);
 			responseDb.add(result);
 		}
 		final DataListResDto<WarehouseDataDto> responseBe = new DataListResDto<WarehouseDataDto>();
 		responseBe.setData(responseDb);
 		return responseBe;
     }
+
+	@Override
+	public WarehouseDataDto setToDto(Warehouse data) {
+		final WarehouseDataDto dto = new WarehouseDataDto();
+		dto.setId(data.getId());
+		dto.setCode(data.getCode());
+		dto.setName(data.getName());
+		dto.setRegion(data.getRegion());
+		dto.setVer(data.getVer());
+		dto.setIsActive(data.getIsActive());
+		return dto;
+	}
     
 }

@@ -90,15 +90,7 @@ public class UserServiceImpl extends BaseDaoImpl implements UserService{
 		User findOne = null;
 		if (optional.isPresent()) {
 			findOne = optional.get();
-			final UserDataDto responseDb = new UserDataDto();
-			responseDb.setId(findOne.getId());
-            responseDb.setCode(findOne.getCode());
-            responseDb.setFullname(findOne.getFullname());
-            responseDb.setRoleId(findOne.getRole().getId());
-            responseDb.setRoleCode(findOne.getRole().getCode());
-            responseDb.setRoleName(findOne.getRole().getName());
-			responseDb.setVer(findOne.getVer());
-			responseDb.setIsActive(findOne.getIsActive());
+			final UserDataDto responseDb = setToDto(findOne);
 			final DataResDto<UserDataDto> responseBe = new DataResDto<UserDataDto>();
 			responseBe.setData(responseDb);
 			return responseBe;
@@ -113,20 +105,26 @@ public class UserServiceImpl extends BaseDaoImpl implements UserService{
 		final List<User> find = userDao.getAll(page, limit);
 		for (int i = 0; i < find.size(); i++) {
 			final User user = find.get(i);
-			final UserDataDto result = new UserDataDto();
-			result.setId(user.getId());
-            result.setCode(user.getCode());
-            result.setFullname(user.getFullname());
-            result.setRoleId(user.getRole().getId());
-            result.setRoleCode(user.getRole().getCode());
-            result.setRoleName(user.getRole().getName());
-			result.setVer(user.getVer());
-			result.setIsActive(user.getIsActive());
+			final UserDataDto result = setToDto(user);
 			responseDb.add(result);
 		}
 		final DataListResDto<UserDataDto> responseBe = new DataListResDto<UserDataDto>();
 		responseBe.setData(responseDb);
 		return responseBe;
     }
+
+	@Override
+	public UserDataDto setToDto(User data) {
+		final UserDataDto dto = new UserDataDto();
+		dto.setId(data.getId());
+		dto.setCode(data.getCode());
+		dto.setFullname(data.getFullname());
+		dto.setRoleId(data.getRole().getId());
+		dto.setRoleCode(data.getRole().getCode());
+		dto.setRoleName(data.getRole().getName());
+		dto.setVer(data.getVer());
+		dto.setIsActive(data.getIsActive());
+		return dto;
+	}
     
 }

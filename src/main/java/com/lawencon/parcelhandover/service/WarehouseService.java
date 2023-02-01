@@ -8,6 +8,7 @@ import com.lawencon.parcelhandover.dto.response.UpdateResDto;
 import com.lawencon.parcelhandover.dto.warehouse.WarehouseDataDto;
 import com.lawencon.parcelhandover.dto.warehouse.WarehouseInsertReqDto;
 import com.lawencon.parcelhandover.dto.warehouse.WarehouseUpdateReqDto;
+import com.lawencon.parcelhandover.model.Warehouse;
 
 public interface WarehouseService {
     
@@ -18,5 +19,7 @@ public interface WarehouseService {
 	public DataResDto<WarehouseDataDto> getById(String id);
 
 	public DataListResDto<WarehouseDataDto> getAll(Integer page, Integer limit);
+
+	public WarehouseDataDto setToDto(Warehouse data);
     
 }

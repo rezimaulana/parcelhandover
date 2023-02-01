@@ -86,14 +86,7 @@ public class VehicleServiceImpl implements VehicleService {
 		Vehicle findOne = null;
 		if (optional.isPresent()) {
 			findOne = optional.get();
-			final VehicleDataDto responseDb = new VehicleDataDto();
-			responseDb.setId(findOne.getId());
-			responseDb.setVehiclePlate(findOne.getVehiclePlate());
-			responseDb.setVehicleModel(findOne.getVehicleModel());
-			responseDb.setYearMaking(findOne.getYearMaking());
-			responseDb.setManufacture(findOne.getManufacture());
-			responseDb.setVer(findOne.getVer());
-			responseDb.setIsActive(findOne.getIsActive());
+			final VehicleDataDto responseDb = setToDto(findOne);
 			final DataResDto<VehicleDataDto> responseBe = new DataResDto<VehicleDataDto>();
 			responseBe.setData(responseDb);
 			return responseBe;
@@ -108,19 +101,25 @@ public class VehicleServiceImpl implements VehicleService {
 		final List<Vehicle> find = vehicleDao.getAll(page, limit);
 		for (int i = 0; i < find.size(); i++) {
 			final Vehicle vehicle = find.get(i);
-			final VehicleDataDto result = new VehicleDataDto();
-			result.setId(vehicle.getId());
-			result.setVehiclePlate(vehicle.getVehiclePlate());
-			result.setVehicleModel(vehicle.getVehicleModel());
-			result.setYearMaking(vehicle.getYearMaking());
-			result.setManufacture(vehicle.getManufacture());
-			result.setVer(vehicle.getVer());
-			result.setIsActive(vehicle.getIsActive());
+			final VehicleDataDto result = setToDto(vehicle);
 			responseDb.add(result);
 		}
 		final DataListResDto<VehicleDataDto> responseBe = new DataListResDto<VehicleDataDto>();
 		responseBe.setData(responseDb);
 		return responseBe;
+	}
+
+	@Override
+	public VehicleDataDto setToDto(Vehicle data) {
+		final VehicleDataDto dto = new VehicleDataDto();
+		dto.setId(data.getId());
+		dto.setVehiclePlate(data.getVehiclePlate());
+		dto.setVehicleModel(data.getVehicleModel());
+		dto.setYearMaking(data.getYearMaking());
+		dto.setManufacture(data.getManufacture());
+		dto.setVer(data.getVer());
+		dto.setIsActive(data.getIsActive());
+		return dto;
 	}
 
 }

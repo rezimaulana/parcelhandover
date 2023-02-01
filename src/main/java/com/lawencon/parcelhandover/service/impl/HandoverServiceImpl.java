@@ -17,7 +17,6 @@ import com.lawencon.parcelhandover.dao.HandoverDao;
 import com.lawencon.parcelhandover.dao.HandoverTypeDao;
 import com.lawencon.parcelhandover.dao.UserVehicleDao;
 import com.lawencon.parcelhandover.dao.WarehouseDao;
-import com.lawencon.parcelhandover.dao.impl.BaseDaoImpl;
 import com.lawencon.parcelhandover.dto.handover.HandoverDataDto;
 import com.lawencon.parcelhandover.dto.handover.HandoverInsertReqDto;
 import com.lawencon.parcelhandover.dto.handover.HandoverUpdateReqDto;
@@ -32,9 +31,10 @@ import com.lawencon.parcelhandover.model.HandoverType;
 import com.lawencon.parcelhandover.model.UserVehicle;
 import com.lawencon.parcelhandover.model.Warehouse;
 import com.lawencon.parcelhandover.service.HandoverService;
+import com.lawencon.parcelhandover.service.impl.base.BaseHandoverService;
 
 @Service
-public class HandoverServiceImpl extends BaseDaoImpl implements HandoverService {
+public class HandoverServiceImpl extends BaseHandoverService implements HandoverService {
 
     @Autowired
     private HandoverDao handoverDao;
@@ -116,26 +116,7 @@ public class HandoverServiceImpl extends BaseDaoImpl implements HandoverService 
 		Handover findOne = null;
 		if (optional.isPresent()) {
 			findOne = optional.get();
-			final HandoverDataDto responseDb = new HandoverDataDto();
-			responseDb.setId(findOne.getId());
-            responseDb.setArrivalTime(findOne.getArrivalTime());
-            responseDb.setDepartureTime(findOne.getDepartureTime());
-            responseDb.setParcelQuantity(findOne.getParcelQuantity());
-            responseDb.setWarehouseId(findOne.getWarehouse().getId());
-            responseDb.setWarehouseCode(findOne.getWarehouse().getCode());
-            responseDb.setWarehouseName(findOne.getWarehouse().getName());
-            responseDb.setWarehouseRegion(findOne.getWarehouse().getRegion());
-            responseDb.setUserVehicleId(findOne.getUserVehicle().getId());
-            responseDb.setUserId(findOne.getUserVehicle().getUser().getId());
-            responseDb.setUserCode(findOne.getUserVehicle().getUser().getCode());
-            responseDb.setUserFullname(findOne.getUserVehicle().getUser().getFullname());
-            responseDb.setVehicleId(findOne.getUserVehicle().getVehicle().getId());
-            responseDb.setVehiclePlate(findOne.getUserVehicle().getVehicle().getVehiclePlate());
-            responseDb.setHandoverTypeId(findOne.getHandoverType().getId());
-            responseDb.setHandoverCode(findOne.getHandoverType().getCode());
-            responseDb.setHandoverName(findOne.getHandoverType().getName());
-			responseDb.setVer(findOne.getVer());
-			responseDb.setIsActive(findOne.getIsActive());
+			final HandoverDataDto responseDb = setToDto(findOne);
 			final DataResDto<HandoverDataDto> responseBe = new DataResDto<HandoverDataDto>();
 			responseBe.setData(responseDb);
 			return responseBe;
@@ -150,26 +131,7 @@ public class HandoverServiceImpl extends BaseDaoImpl implements HandoverService 
 		final List<Handover> find = handoverDao.getAll(page, limit);
 		for (int i = 0; i < find.size(); i++) {
 			final Handover handover = find.get(i);
-			final HandoverDataDto result = new HandoverDataDto();
-			result.setId(handover.getId());
-            result.setArrivalTime(handover.getArrivalTime());
-            result.setDepartureTime(handover.getDepartureTime());
-            result.setParcelQuantity(handover.getParcelQuantity());
-            result.setWarehouseId(handover.getWarehouse().getId());
-            result.setWarehouseCode(handover.getWarehouse().getCode());
-            result.setWarehouseName(handover.getWarehouse().getName());
-            result.setWarehouseRegion(handover.getWarehouse().getRegion());
-            result.setUserVehicleId(handover.getUserVehicle().getId());
-            result.setUserId(handover.getUserVehicle().getUser().getId());
-            result.setUserCode(handover.getUserVehicle().getUser().getCode());
-            result.setUserFullname(handover.getUserVehicle().getUser().getFullname());
-            result.setVehicleId(handover.getUserVehicle().getVehicle().getId());
-            result.setVehiclePlate(handover.getUserVehicle().getVehicle().getVehiclePlate());
-            result.setHandoverTypeId(handover.getHandoverType().getId());
-            result.setHandoverCode(handover.getHandoverType().getCode());
-            result.setHandoverName(handover.getHandoverType().getName());   
-			result.setVer(handover.getVer());
-			result.setIsActive(handover.getIsActive());
+			final HandoverDataDto result = setToDto(handover);
 			responseDb.add(result);
 		}
 		final DataListResDto<HandoverDataDto> responseBe = new DataListResDto<HandoverDataDto>();

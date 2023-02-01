@@ -8,6 +8,7 @@ import com.lawencon.parcelhandover.dto.response.UpdateResDto;
 import com.lawencon.parcelhandover.dto.vehicle.VehicleDataDto;
 import com.lawencon.parcelhandover.dto.vehicle.VehicleInsertReqDto;
 import com.lawencon.parcelhandover.dto.vehicle.VehicleUpdateReqDto;
+import com.lawencon.parcelhandover.model.Vehicle;
 
 public interface VehicleService {
 	
@@ -18,5 +19,7 @@ public interface VehicleService {
 	public DataResDto<VehicleDataDto> getById(String id);
 
 	public DataListResDto<VehicleDataDto> getAll(Integer page, Integer limit);
+
+	public VehicleDataDto setToDto(Vehicle data);
 	
 }

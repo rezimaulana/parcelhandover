@@ -102,18 +102,7 @@ public class UserVehicleServiceImpl extends BaseDaoImpl implements UserVehicleSe
 		UserVehicle findOne = null;
 		if (optional.isPresent()) {
 			findOne = optional.get();
-			final UserVehicleDataDto responseDb = new UserVehicleDataDto();
-			responseDb.setId(findOne.getId());
-            responseDb.setUserId(findOne.getUser().getId());
-            responseDb.setCode(findOne.getUser().getCode());
-            responseDb.setFullname(findOne.getUser().getFullname());
-            responseDb.setVehicleId(findOne.getVehicle().getId());
-            responseDb.setVehiclePlate(findOne.getVehicle().getVehiclePlate());
-            responseDb.setVehicleModel(findOne.getVehicle().getVehicleModel());
-            responseDb.setYearMaking(findOne.getVehicle().getYearMaking());
-            responseDb.setManufacture(findOne.getVehicle().getManufacture());
-			responseDb.setVer(findOne.getVer());
-			responseDb.setIsActive(findOne.getIsActive());
+			final UserVehicleDataDto responseDb = setToDto(findOne);
 			final DataResDto<UserVehicleDataDto> responseBe = new DataResDto<UserVehicleDataDto>();
 			responseBe.setData(responseDb);
 			return responseBe;
@@ -128,23 +117,29 @@ public class UserVehicleServiceImpl extends BaseDaoImpl implements UserVehicleSe
 		final List<UserVehicle> find = userVehicleDao.getAll(page, limit);
 		for (int i = 0; i < find.size(); i++) {
 			final UserVehicle userVehicle = find.get(i);
-			final UserVehicleDataDto result = new UserVehicleDataDto();
-			result.setId(userVehicle.getId());
-            result.setUserId(userVehicle.getUser().getId());
-            result.setCode(userVehicle.getUser().getCode());
-            result.setFullname(userVehicle.getUser().getFullname());
-            result.setVehicleId(userVehicle.getVehicle().getId());
-            result.setVehiclePlate(userVehicle.getVehicle().getVehiclePlate());
-            result.setVehicleModel(userVehicle.getVehicle().getVehicleModel());
-            result.setYearMaking(userVehicle.getVehicle().getYearMaking());
-            result.setManufacture(userVehicle.getVehicle().getManufacture());
-			result.setVer(userVehicle.getVer());
-			result.setIsActive(userVehicle.getIsActive());
+			final UserVehicleDataDto result = setToDto(userVehicle);
 			responseDb.add(result);
 		}
 		final DataListResDto<UserVehicleDataDto> responseBe = new DataListResDto<UserVehicleDataDto>();
 		responseBe.setData(responseDb);
 		return responseBe;
+    }
+
+    @Override
+    public UserVehicleDataDto setToDto(UserVehicle data) {
+        final UserVehicleDataDto dto = new UserVehicleDataDto();
+        dto.setId(data.getId());
+        dto.setUserId(data.getUser().getId());
+        dto.setCode(data.getUser().getCode());
+        dto.setFullname(data.getUser().getFullname());
+        dto.setVehicleId(data.getVehicle().getId());
+        dto.setVehiclePlate(data.getVehicle().getVehiclePlate());
+        dto.setVehicleModel(data.getVehicle().getVehicleModel());
+        dto.setYearMaking(data.getVehicle().getYearMaking());
+        dto.setManufacture(data.getVehicle().getManufacture());
+        dto.setVer(data.getVer());
+        dto.setIsActive(data.getIsActive());
+        return dto;
     }
 
 }

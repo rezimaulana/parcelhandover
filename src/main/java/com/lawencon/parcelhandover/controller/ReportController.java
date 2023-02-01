@@ -19,11 +19,45 @@ public class ReportController {
     @Autowired
     private ReportService reportService;
 
-    @GetMapping
-	public ResponseEntity<ReportResDto<HandoverDataDto>> getById(@RequestParam(required = true) final String startDate,
+    @GetMapping("summary")
+	public ResponseEntity<ReportResDto<HandoverDataDto>> summaryInOut(@RequestParam(required = true) final String startDate,
         @RequestParam(required = true) final String endDate){
 		final ReportResDto<HandoverDataDto> result = reportService.summaryInOut(startDate, endDate);
 		return new ResponseEntity<>(result, HttpStatus.OK);
 	}
 
+    @GetMapping("summary/warehouse")
+	public ResponseEntity<ReportResDto<HandoverDataDto>> summaryInOutWh(@RequestParam(required = true) final String startDate,
+        @RequestParam(required = true) final String endDate,  @RequestParam(required = true) final String warehouseCode){
+		final ReportResDto<HandoverDataDto> result = reportService.summaryInOutWh(startDate, endDate, warehouseCode);
+		return new ResponseEntity<>(result, HttpStatus.OK);
+	}
+
+    @GetMapping("summary/driver")
+	public ResponseEntity<ReportResDto<HandoverDataDto>> summaryInOutDriver(@RequestParam(required = true) final String startDate,
+        @RequestParam(required = true) final String endDate,  @RequestParam(required = true) final String userCode){
+		final ReportResDto<HandoverDataDto> result = reportService.summaryInOutDriver(startDate, endDate, userCode);
+		return new ResponseEntity<>(result, HttpStatus.OK);
+	}
+
+    @GetMapping("sorting")
+	public ResponseEntity<ReportResDto<HandoverDataDto>> sortingAvgInOut(@RequestParam(required = true) final String startDate,
+        @RequestParam(required = true) final String endDate){
+		final ReportResDto<HandoverDataDto> result = reportService.sortingAvgInOut(startDate, endDate);
+		return new ResponseEntity<>(result, HttpStatus.OK);
+	}
+
+	@GetMapping("sorting/warehouse")
+	public ResponseEntity<ReportResDto<HandoverDataDto>> sortingAvgInOutWh(@RequestParam(required = true) final String startDate,
+        @RequestParam(required = true) final String endDate, @RequestParam(required = true) final String warehouseCode){
+		final ReportResDto<HandoverDataDto> result = reportService.sortingAvgInOutWh(startDate, endDate, warehouseCode);
+		return new ResponseEntity<>(result, HttpStatus.OK);
+	}
+
+	@GetMapping("sorting/driver")
+	public ResponseEntity<ReportResDto<HandoverDataDto>> sortingAvgInOutDriver(@RequestParam(required = true) final String startDate,
+        @RequestParam(required = true) final String endDate, @RequestParam(required = true) final String userCode){
+		final ReportResDto<HandoverDataDto> result = reportService.sortingAvgInOutDriver(startDate, endDate, userCode);
+		return new ResponseEntity<>(result, HttpStatus.OK);
+	}
 }

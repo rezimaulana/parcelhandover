@@ -1,29 +1,28 @@
 package com.lawencon.parcelhandover.dto.response;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 public class ReportResDto<T> {
     
-    private BigDecimal incoming;
+    private String incoming;
 
-    private BigDecimal outgoing;
+    private String outgoing;
     
     private List<T> data;
 
-    public BigDecimal getIncoming() {
+    public String getIncoming() {
         return incoming;
     }
 
-    public void setIncoming(BigDecimal incoming) {
+    public void setIncoming(String incoming) {
         this.incoming = incoming;
     }
 
-    public BigDecimal getOutgoing() {
+    public String getOutgoing() {
         return outgoing;
     }
 
-    public void setOutgoing(BigDecimal outgoing) {
+    public void setOutgoing(String outgoing) {
         this.outgoing = outgoing;
     }
 

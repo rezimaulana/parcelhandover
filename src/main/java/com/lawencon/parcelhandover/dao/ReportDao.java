@@ -11,4 +11,18 @@ public interface ReportDao {
 
     public List<Handover> dataInOut(String startDate, String endDate);
 
+    public BigDecimal sumParcelWh(String startDate, String endDate, String handoverTypeCode, String warehouseCode);
+
+    public List<Handover> dataInOutWh(String startDate, String endDate, String warehouseCode);
+
+    public BigDecimal sumParcelDriver(String startDate, String endDate, String handoverTypeCode, String userCode);
+
+    public List<Handover> dataInOutDriver(String startDate, String endDate, String userCode);
+
+    public Double avgSorting(String startDate, String endDate, String handoverTypeCode);
+
+    public Double avgSortingWh(String startDate, String endDate, String handoverTypeCode, String warehouseCode);
+
+    public Double avgSortingDriver(String startDate, String endDate, String handoverTypeCode, String userCode);
+
 }

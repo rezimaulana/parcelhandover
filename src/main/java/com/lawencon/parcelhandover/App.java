@@ -11,10 +11,3 @@ public class App {
 	}
 
 }
-// incoming outgoing by range date
-// incoming outgoing by range date and hub
-// incoming outgoing by range date and driver
-// average inbound sorting by range date
-// average inbound sorting by range date and hub
-// average outbound sorting by range date
-// average outbound sorting by range date and hub

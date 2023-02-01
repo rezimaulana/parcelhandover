@@ -10,20 +10,14 @@ public interface ReportService {
     
     public ReportResDto<HandoverDataDto> summaryInOut(String startDate, String endDate);
 
-    // public ReportResDto<HandoverDataDto> summaryInOutWh(String startDate, String endDate, String warehouseCode);
+    public ReportResDto<HandoverDataDto> summaryInOutWh(String startDate, String endDate, String warehouseCode);
+
+    public ReportResDto<HandoverDataDto> summaryInOutDriver(String startDate, String endDate, String userCode);
+
+    public ReportResDto<HandoverDataDto> sortingAvgInOut(String startDate, String endDate);
     
-    // public ReportResDto<HandoverDataDto> summaryInOutDriver(String startDate, String endDate, String userCode);
-
-    // public ReportResDto<HandoverDataDto> summaryAvgIn(String startDate, String endDate);
-
-    // public ReportResDto<HandoverDataDto> summaryAvgInWh(String startDate, String endDate, String warehouseCode);
-
-    // public ReportResDto<HandoverDataDto> summaryAvgInDriver(String startDate, String endDate, String userCode);
-
-    // public ReportResDto<HandoverDataDto> summaryAvgOut(String startDate, String endDate);
-
-    // public ReportResDto<HandoverDataDto> summaryAvgOutWh(String startDate, String endDate, String warehouseCode);
-
-    // public ReportResDto<HandoverDataDto> summaryAvgOutDriver(String startDate, String endDate, String userCode);
+    public ReportResDto<HandoverDataDto> sortingAvgInOutWh(String startDate, String endDate, String warehouseCode);
+    
+    public ReportResDto<HandoverDataDto> sortingAvgInOutDriver(String startDate, String endDate, String userCode);
 
 }

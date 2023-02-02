@@ -1,12 +1,20 @@
 package com.lawencon.parcelhandover.dto.vehicle;
 
+import javax.validation.constraints.NotNull;
+
 public class VehicleUpdateReqDto {
 	
+	@NotNull
 	private String id;
+	@NotNull
 	private String vehicleModel;
+	@NotNull
 	private String yearMaking;
+	@NotNull
 	private String manufacture;
+	@NotNull
 	private Boolean isActive;
+	@NotNull
 	private Integer ver;
 
 	public Integer getVer() {

@@ -1,5 +1,7 @@
 package com.lawencon.parcelhandover.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,13 +31,13 @@ public class VehicleController {
 	private VehicleService vehicleService;
 	
 	@PostMapping
-	public ResponseEntity<TransactionResDto<InsertResDto>> insert(@RequestBody final VehicleInsertReqDto data){
+	public ResponseEntity<TransactionResDto<InsertResDto>> insert(@RequestBody @Valid final VehicleInsertReqDto data){
 		final TransactionResDto<InsertResDto> result = vehicleService.insert(data);
 		return new ResponseEntity<>(result, HttpStatus.CREATED);
 	}
 	
 	@PutMapping
-	public ResponseEntity<TransactionResDto<UpdateResDto>> update(@RequestBody final VehicleUpdateReqDto data){
+	public ResponseEntity<TransactionResDto<UpdateResDto>> update(@RequestBody @Valid final VehicleUpdateReqDto data){
 		final TransactionResDto<UpdateResDto> result = vehicleService.update(data);
 		return new ResponseEntity<>(result, HttpStatus.OK);
 	}

@@ -1,10 +1,16 @@
 package com.lawencon.parcelhandover.dto.vehicle;
 
+import javax.validation.constraints.NotNull;
+
 public class VehicleInsertReqDto {
 	
+	@NotNull
 	private String vehiclePlate;
+	@NotNull
 	private String vehicleModel;
+	@NotNull
 	private String yearMaking;
+	@NotNull
 	private String manufacture;
 	public String getVehiclePlate() {
 		return vehiclePlate;

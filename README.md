@@ -13,13 +13,8 @@
 <h3 align="center">Parcel Handover</h3>
 
   <p align="center">
-    Parcel handover from one driver to another in the warehouse.
+    Serah terima barang dari satu driver ke driver lainnya di gudang.
     <br />
-    <a href="https://github.com/rezimaulana/parcelhandover"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/rezimaulana/parcelhandover">View Demo</a>
-    ·
     <a href="https://github.com/rezimaulana/parcelhandover/issues">Report Bug</a>
     ·
     <a href="https://github.com/rezimaulana/parcelhandover/issues">Request Feature</a>
@@ -28,11 +23,11 @@
 
 <!-- TABLE OF CONTENTS -->
 <details>
-  <summary>Table of Contents</summary>
+  <summary>Daftar Isi</summary>
   <ol>
-    <li><a href="#about-the-project">About The Project</a></li>
+    <li><a href="#deskripsi-project">Deskripsi Project</a></li>
     <li>
-      <a href="#getting-started">Getting Started</a>
+      <a href="#spesifikasi-aplikasi">Spesifikasi Aplikasi</a>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
@@ -45,9 +40,9 @@
 </details>
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+## Deskripsi Project
 
-<p>Projek ini memiliki tujuan untuk membuat sistem yang dapat memantau dan mencatat secara akurat jumlah barang masuk dan keluar pada gudang logistik.</p>
+<p>Projek ini memiliki tujuan untuk memantau dan mencatat secara akurat jumlah barang masuk dan keluar pada gudang logistik.</p>
 <p>Sistem ini akan mengumpulkan data yang akan digunakan untuk tiga hal utama:<br> 
 1. Melacak kehadiran driver gudang, meliputi waktu kedatangan dan waktu keberangkatan<br>
 2. Analisis jumlah paket masuk dan keluar pada gudang<br>
@@ -57,18 +52,25 @@
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
-## Getting Started
+## Spesifikasi Aplikasi
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+Aplikasi ini dikembangkan menggunakan Framework Spring Boot versi 2.7.4. Spring Boot digunakan agar aplikasi ini akan memiliki performa yang optimal dan mudah digunakan.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
+Berikut adalah daftar tools dan software yang diperlukan untuk menjalankan aplikasi.
+* Maven 3.8.6
+  ```url
+  https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.8.6/apache-maven-3.8.6-bin.zip
   ```
+* PostgreSQL 11.18
+  ```url
+  https://www.enterprisedb.com/downloads/postgres-postgresql-downloads
+  ```
+* Open JDK 11.0.2
+  ```url
+  https://jdk.java.net/archive/
+  ``` 
 
 ### Installation
 
@@ -85,6 +87,7 @@ This is an example of how to list things you need to use the software and how to
 5. Run App.java
 6. Table akan terupdate otomatis pada database
 7. Data init akan insert otomatis pada tabel
+8. http://localhost:5003/swagger-ui/index.html#/
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

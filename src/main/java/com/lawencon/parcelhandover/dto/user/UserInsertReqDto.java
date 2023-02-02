@@ -1,9 +1,14 @@
 package com.lawencon.parcelhandover.dto.user;
 
+import javax.validation.constraints.NotNull;
+
 public class UserInsertReqDto {
     
+    @NotNull
     private String code;
+    @NotNull
     private String fullname;
+    @NotNull
     private String role;
 
     public String getCode() {

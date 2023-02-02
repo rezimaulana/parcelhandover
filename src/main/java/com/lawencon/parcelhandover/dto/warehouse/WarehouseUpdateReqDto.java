@@ -1,11 +1,18 @@
 package com.lawencon.parcelhandover.dto.warehouse;
 
+import javax.validation.constraints.NotNull;
+
 public class WarehouseUpdateReqDto {
     
+    @NotNull
     private String id;
+    @NotNull
     private String name;
+    @NotNull
     private String region;
+    @NotNull
     private Boolean isActive;
+    @NotNull
     private Integer ver;
     
     public String getId() {

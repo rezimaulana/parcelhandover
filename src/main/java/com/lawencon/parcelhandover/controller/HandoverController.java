@@ -1,5 +1,7 @@
 package com.lawencon.parcelhandover.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,14 +33,14 @@ public class HandoverController {
 	private HandoverService handoverService;
 	
 	@PostMapping
-	public ResponseEntity<TransactionResDto<InsertResDto>> insert(@RequestBody final HandoverInsertReqDto data){
+	public ResponseEntity<TransactionResDto<InsertResDto>> insert(@RequestBody @Valid final HandoverInsertReqDto data){
         System.out.println(data.getArrivalTime());
 		final TransactionResDto<InsertResDto> result = handoverService.insert(data);
 		return new ResponseEntity<>(result, HttpStatus.CREATED);
 	}
 
     @PutMapping
-	public ResponseEntity<TransactionResDto<UpdateResDto>> update(@RequestBody final HandoverUpdateReqDto data){
+	public ResponseEntity<TransactionResDto<UpdateResDto>> update(@RequestBody @Valid final HandoverUpdateReqDto data){
 		final TransactionResDto<UpdateResDto> result = handoverService.update(data);
 		return new ResponseEntity<>(result, HttpStatus.OK);
 	}

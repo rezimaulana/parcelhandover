@@ -1,14 +1,14 @@
 package com.lawencon.parcelhandover.dto.warehouse;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
 
 public class WarehouseInsertReqDto {
     
-    @NotNull
+    @NotBlank
     private String code;
-    @NotNull
+    @NotBlank
     private String name;
-    @NotNull
+    @NotBlank
     private String region;
     
     public String getCode() {

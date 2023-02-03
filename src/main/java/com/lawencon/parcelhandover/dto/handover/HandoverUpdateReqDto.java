@@ -2,21 +2,22 @@ package com.lawencon.parcelhandover.dto.handover;
 
 import java.math.BigDecimal;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 public class HandoverUpdateReqDto {
     
-    @NotNull
+    @NotBlank
     private String id;
-    @NotNull
+    @NotBlank
     private String arrivalTime;
-    @NotNull
+    @NotBlank
     private String departureTime;
     @NotNull
     private BigDecimal parcelQuantity;
-    @NotNull
+    @NotBlank
     private String warehouseCode;
-    @NotNull
+    @NotBlank
     private String handoverTypeCode;
     @NotNull
     private Boolean isActive;

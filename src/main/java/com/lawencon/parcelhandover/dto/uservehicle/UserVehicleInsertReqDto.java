@@ -1,12 +1,12 @@
 package com.lawencon.parcelhandover.dto.uservehicle;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
 
 public class UserVehicleInsertReqDto {
     
-    @NotNull
+    @NotBlank
     private String userId;
-    @NotNull
+    @NotBlank
     private String vehicleId;
     
     public String getUserId() {
